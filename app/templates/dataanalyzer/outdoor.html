@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>基本信息</title>
+
+
+    <link href="../../static/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/bootstrap-3.3.5/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <!--jQuery-UI-->
+    <link type="text/css" href="../../static/jquery-ui-bootstrap/css/custom-theme/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <br>
+    <div class="container">
+        <h2 class="text-center">出境流量</h2>
+    </div>
+
+    <br>
+    <div class="bs-example" data-example-id="hoverable-table">
+        <table class="table table-hover table-responsive  table-condensed table-striped">
+            <thead>
+                <tr>
+                    <th class="text-center">IP地址</th>
+                    <th class="text-center">地理位置</th>
+                    <!-- <th class="text-left">是否出境流量</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for ip, city in out_data.items() %}
+                <tr class="bodyTr" data-toggle="modal" data-target="#myModal">
+                    <th scope="row" class="text-center" id="id">{{ ip }}</th>
+                    <td class="text-nowrap text-center">{{ city }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+    <script src="../../static/bootstrap-3.3.5/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="../../static/bootstrap-3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../static/jquery-ui-bootstrap/assets/js/jquery-ui-1.10.0.custom.min.js" type="text/javascript"></script>
+    <!--清除过滤器-->
+
+</body>
+
+</html>

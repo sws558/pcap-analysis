@@ -1,0 +1,12 @@
+[Unit]
+Description=Web interface to control other services and run custom scripts
+After=syslog.target network.target
+
+[Service]
+Environment="PATH=/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin/:/home/lenovo/.local/bin/"
+ExecStart=/home/lenovo/.local/bin/gunicorn -c /home/lenovo/opt/pcap_analysis/deploy_config.py run:app
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

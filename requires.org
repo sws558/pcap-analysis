@@ -1,0 +1,8 @@
+
+* 不需要安装的包
+ scapy-python3 sympy
+* 需要安装
+pip install Flask Flask-WTF geoip2 pyx requests tensorflow==2.5.0 pandas scikit-learn scapy
+
+* for cicflowmeter
+apt-get install tshark openjdk-8-jre-headless openjdk-8-jdk ant libpcap-dev -y

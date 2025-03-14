@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>基本信息</title>
+
+
+    <link href="../../static/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/bootstrap-3.3.5/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <!--jQuery-UI-->
+    <link type="text/css" href="../../static/jquery-ui-bootstrap/css/custom-theme/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <br>
+    <div class="container">
+        <h2 class="text-center">系统配置</h2>
+    </div>
+
+    <br>
+    <div class="bs-example" data-example-id="hoverable-table">
+        <div class="login-container">
+            <div class="all-container">
+              <div class="left-container">
+                <div class="title"><span>基本配置</span></div>
+                <div class="input-container">
+                  <div class="input-block">
+                    <span>压缩包中文件个数&nbsp;&nbsp;</span><input type="number" name="NUM" value="3">
+                  </div>
+                  <div class="input-block">
+                    <span>阈值&nbsp;&nbsp;</span><input type="number" name="M1_LIMIT" value="0.75">
+                  </div>
+                  <!-- <div class="input-block">
+                    <input type="text" name="time" placeholder="预处理模型">
+                  </div>
+                  <div class="input-block">
+                    <input type="text" name="time" placeholder="分析网段">              
+                  </div>
+                  <div class="input-block">
+                    <input type="text" name="time" placeholder="抓取时间间隔">
+                  </div> -->
+                </div>
+                <div class="title"><span>恶意加密流量分类</span></div>
+                <div class="input-container">
+                  <div class="input-block">
+                    <span>损失函数&nbsp;&nbsp;</span>
+                    <select name="MODE_3_LOSS">  
+                      <option value="categorical_crossentropy">categorical_crossentropy</option>  
+                      <option value="categorical_focal_crossentropy" selected>categorical_focal_crossentropy</option>  
+                      <option value="categorical_hinge">categorical_hinge</option>  
+                      <option value="sparse_categorical_crossentropy">sparse_categorical_crossentropy</option>  
+                    </select>
+                  </div>
+                  <div class="input-block">
+                    <span>学习率&nbsp;&nbsp;</span><input type="number" name="MODE_3_LEARNINGRATE" value="0.001">
+                  </div>
+                  <div class="input-block">
+                    <span>准确率&nbsp;&nbsp;</span>
+                    <select name="MODE_3_METRICS">  
+                      <option value="Accuracy" selected>Accuracy</option>  
+                      <option value="CategoricalAccuracy">CategoricalAccuracy</option>  
+                      <option value="SparseCategoricalAccuracy">SparseCategoricalAccuracy</option>
+                    </select>
+                  </div>
+                  <div class="input-block">
+                    <span>批处理大小&nbsp;&nbsp;</span><input type="text" name="MODE_3_BATCH" value="None">
+                  </div>
+                </div>
+                <div class="actoin-container" onclick="submitData()">
+                  <span>提交修改</span>
+                </div>
+              </div>
+              <div class="right-container">
+                <div class="title"><span>恶意加密流量识别</span></div>
+                <div class="input-container">
+                  <div class="input-block">
+                    <span>损失函数&nbsp;&nbsp;</span>
+                    <select name="MODE_4_LOSS">  
+                      <option value="binary_crossentropy" selected>binary_crossentropy</option>  
+                      <option value="binary_focal_crossentropy">binary_focal_crossentropy</option>  
+                      <option value="hinge">hinge</option>  
+                    </select>
+                  </div>
+                  <div class="input-block">
+                    <span>学习率&nbsp;&nbsp;</span><input type="number" name="MODE_4_LEARNINGRATE" value="0.001">
+                  </div>
+                  <div class="input-block">
+                    <span>准确率&nbsp;&nbsp;</span>
+                    <select name="MODE_4_METRICS">  
+                      <option value="Accuracy" selected>Accuracy</option>  
+                      <option value="BinaryAccuracy">BinaryAccuracy</option>  
+                    </select>
+                  </div>
+                  <div class="input-block">
+                    <span>批处理大小&nbsp;&nbsp;</span><input type="text" name="MODE_4_BATCH" value="None">              
+                  </div>
+                </div>
+                <div class="title"><span>恶意加密流量类别</span></div>
+                <div class="input-container">
+                  <div class="input-block">
+                    <span>损失函数&nbsp;&nbsp;</span>
+                    <select name="MODE_5_LOSS">  
+                      <option value="categorical_crossentropy" selected>categorical_crossentropy</option>  
+                      <option value="categorical_focal_crossentropy">categorical_focal_crossentropy</option>  
+                      <option value="categorical_hinge">categorical_hinge</option>  
+                      <option value="sparse_categorical_crossentropy">sparse_categorical_crossentropy</option>  
+                    </select>
+                  </div>
+                  <div class="input-block">
+                    <span>学习率&nbsp;&nbsp;</span><input type="number" name="MODE_5_LEARNINGRATE" value="0.001">
+                  </div>
+                  <div class="input-block">
+                    <span>准确率&nbsp;&nbsp;</span>
+                    <select name="MODE_5_METRICS">  
+                      <option value="Accuracy" selected>Accuracy</option>  
+                      <option value="CategoricalAccuracy">CategoricalAccuracy</option>  
+                      <option value="SparseCategoricalAccuracy">SparseCategoricalAccuracy</option>  
+                    </select>
+                  </div>
+                  <div class="input-block">
+                    <span>批处理大小&nbsp;&nbsp;</span><input type="text" name="MODE_5_BATCH" value="None">
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="message-container">
+                <span>高级设置</span>
+              </div> -->
+            </div>
+             
+          </div>
+    </div>
+
+
+
+
+    <script src="../../static/bootstrap-3.3.5/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="../../static/bootstrap-3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../static/jquery-ui-bootstrap/assets/js/jquery-ui-1.10.0.custom.min.js" type="text/javascript"></script>
+    <!--清除过滤器-->
+
+</body>
+
+<script>
+
+  function submitData() {
+    var NUM = document.getElementsByName('NUM')[0].value;
+    var M1_LIMIT = document.getElementsByName('M1_LIMIT')[0].value;
+    var MODE_3_LOSS = document.getElementsByName('MODE_3_LOSS')[0].value;
+    var MODE_3_LEARNINGRATE = document.getElementsByName('MODE_3_LEARNINGRATE')[0].value;
+    var MODE_3_METRICS = document.getElementsByName('MODE_3_METRICS')[0].value;
+    var MODE_3_BATCH = document.getElementsByName('MODE_3_BATCH')[0].value;
+    var MODE_4_LOSS = document.getElementsByName('MODE_4_LOSS')[0].value;
+    var MODE_4_LEARNINGRATE = document.getElementsByName('MODE_4_LEARNINGRATE')[0].value;
+    var MODE_4_METRICS = document.getElementsByName('MODE_4_METRICS')[0].value;
+    var MODE_4_BATCH = document.getElementsByName('MODE_4_BATCH')[0].value;
+    var MODE_5_LOSS = document.getElementsByName('MODE_5_LOSS')[0].value;
+    var MODE_5_LEARNINGRATE = document.getElementsByName('MODE_5_LEARNINGRATE')[0].value;
+    var MODE_5_METRICS = document.getElementsByName('MODE_5_METRICS')[0].value;
+    var MODE_5_BATCH = document.getElementsByName('MODE_5_BATCH')[0].value;
+
+    $.ajax({  
+        type: "POST",
+        url: "/configsys",
+        contentType: "application/json",
+        data: JSON.stringify({ 'NUM': NUM, 'M1_LIMIT': M1_LIMIT, 
+        'MODE_3_LOSS': MODE_3_LOSS, 'MODE_3_LEARNINGRATE': MODE_3_LEARNINGRATE, 'MODE_3_METRICS': MODE_3_METRICS, 'MODE_3_BATCH': MODE_3_BATCH, 
+        'MODE_4_LOSS': MODE_4_LOSS, 'MODE_4_LEARNINGRATE': MODE_4_LEARNINGRATE, 'MODE_4_METRICS': MODE_4_METRICS, 'MODE_4_BATCH': MODE_4_BATCH, 
+        'MODE_5_LOSS': MODE_5_LOSS, 'MODE_5_LEARNINGRATE': MODE_5_LEARNINGRATE, 'MODE_5_METRICS': MODE_5_METRICS, 'MODE_5_BATCH': MODE_5_BATCH }),
+        dataType: "html",
+        cache: false,
+        success: function(response) {
+            var responseObj = JSON.parse(response);  
+            console.log(responseObj)
+            if(responseObj.code=="200"){
+                alert("系统配置修改成功")
+            }
+            else{
+                alert("系统配置修改失败，请联系管理员")
+            }
+            
+            },
+            error: function() {
+                console.log('请求失败，请联系管理员');
+            }
+        });
+    
+  }
+</script>
+
+
+<style>
+* {
+    padding: 0;
+    margin: 0;
+  }
+  
+  html {
+    height: 100%;
+  }
+  
+  /* rgb(114,135,254)   rgb(130,88,186)
+  
+  rgb(59,45,159)
+  
+  rgb(95, 76, 194)
+  
+  rgb(118,76,163)  rgb(92,103,211)
+  
+  rgb(199, 191, 219)
+  rgb(237,221,22) */
+  
+  
+  body {
+    background-image: linear-gradient(to bottom right,rgb(147, 162, 247),rgb(182, 130, 250));
+  }
+
+  
+  body .login-container {
+    width: 1100px;
+    height: 315px;
+    margin: 0 auto;
+    margin-top: 0%;
+    margin-left: 10%;
+    border-radius: 15px;
+    display: inline-block;
+  }
+  
+  body .login-container .all-container {
+    display: flex;  
+
+
+    width: 1000px;
+    border-radius: 15px;
+
+    padding: 60px;
+    background-image: linear-gradient(to bottom right,rgb(118,76,163), rgb(92,103,211));
+  }
+  
+  body .login-container .left-container {
+    display: inline-block;
+    width: 50%;
+  }
+
+  body .login-container .right-container {
+    display: inline-block;
+    width: 50%;
+  }
+
+  body .login-container .all-container .title {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 200;
+  }
+  
+  body .login-container .all-container .title span {
+    border-bottom: 3px solid rgb(237,221,22) ;
+  }
+  
+  body .login-container .all-container .input-container {
+    padding: 20px 0;
+  }
+
+  body .login-container .all-container .input-container .input-block {
+    display: flex;
+  }
+
+  body .login-container .all-container .input-container .input-block span {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 150;
+    display: inline;
+    margin: 8px 0;
+    padding: 5px 0;
+  }
+  
+  body .login-container .all-container .input-container .input-block input {
+    border: 0;
+    background: none;
+    outline: 0;
+    color: #fff;
+    margin: 8px 0;
+    display: inline;
+    flex: 0.9;
+    padding: 5px 0;
+    transition: .2s;
+    border-bottom: 1px solid rgb(199, 191, 219);
+  }
+
+  body .login-container .all-container .input-container .input-block select {
+    border: 0;
+    background: none;
+    outline: 0;
+    color: #fff;
+    margin: 8px 0;
+    display: inline;
+    flex: 0.9;
+    padding: 5px 0;
+    transition: .2s;
+    border-bottom: 1px solid rgb(199, 191, 219);
+  }
+
+  body .login-container .all-container .input-container .input-block option {
+    color: black;
+  }
+  
+  body .login-container .all-container .input-container .input-block input:hover {
+    border-bottom-color: #fff;
+  }
+  
+  ::-webkit-input-placeholder {
+    color: rgb(199, 191, 219);
+  }
+  
+  body .login-container .all-container .message-container {
+    font-size: 14px;
+    transition: .2s;
+    color: rgb(199, 191, 219);
+    cursor: pointer;
+  }
+  
+  body .login-container .all-container .message-container:hover {
+    color: #fff;
+  }
+ 
+  body .login-container .all-container .actoin-container {
+  font-size: 20px;
+  color: #fff;
+  position: relative;
+  margin-left:30%;
+  margin-top:10%;
+}
+
+body .login-container .all-container .actoin-container span {
+  border: 1px solid rgb(237,221,22);
+  padding: 10px;
+  display: inline;
+  line-height: 25px;
+  border-radius: 25px;
+  bottom: 10px;
+  left: calc(72px - 25px);
+  transition: .2s;
+  cursor: pointer;
+}
+
+body .login-container .all-container .actoin-container span:hover {
+  background-color: rgb(237,221,22);
+  color: rgb(95, 76, 194);
+}
+  </style>
+
+</html>

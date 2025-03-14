@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>基本信息</title>
+
+
+    <link href="../../static/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/bootstrap-3.3.5/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <!--jQuery-UI-->
+    <link type="text/css" href="../../static/jquery-ui-bootstrap/css/custom-theme/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+    <style>
+        table.table thead th {
+    background-color: #121212; /* 设置表头背景颜色 */
+    color: white; /* 设置表头文字颜色 */
+    border-bottom: 2px solid #ddd; /* 加强下边框 */
+    padding: 12px 10px; /* 调整内边距 */
+}
+
+/* 当鼠标悬浮在表格行上时的样式 */
+table.table tbody tr:hover {
+    background-color: #f5f5f5; /* 设置背景色 */
+}
+table.table thead tr {
+    height: 50px; /* 可以调整这个值以满足你的需要 */
+}
+
+/* 设置表体的行高 */
+table.table tbody tr {
+    height: 40px; /* 同样可以调整这个值 */
+}
+/* 调整表格的边框样式 */
+table.table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+/* 调整表格每一行的边框 */
+table.table tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+/* 调整最后一行的边框 */
+table.table tbody tr:last-child {
+    border-bottom: none;
+}
+    </style>
+</head>
+
+<body>
+        <!--额外-->
+        <!-- <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="pull-right">
+
+                        <select id="exportFormat" class="form-control">
+                            <option value="xml">XML</option>
+                            <option value="xls">XLS</option>
+                            <option value="xlsx" selected>XLSX</option>
+                        </select>
+                        <button onclick="exportData()" class="btn btn-default">导出数据</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!--额外到此-->
+    <br>
+    <div class="container">
+        <div class="row">
+          <div class="col-xs-10 text-center"> <!-- 使用 col-xs-9 使其占据九分之一宽度，并居中 -->
+            <h2>加密流量识别</h2>
+          </div>
+          <div class="col-xs-2 text-right d-flex align-items-center" style="margin-top: 2%;"> <!-- 使用 col-xs-3 使其占据三分之一宽度，并靠右侧 -->
+            <div class="row">
+              <div class="col-xs-6">
+                <select id="exportFormat" class="form-control">
+                  <option value="xml">XML</option>
+                  <option value="xls">XLS</option>
+                  <option value="xlsx" selected>XLSX</option>
+                </select>
+              </div>
+              <div class="col-xs-1" >
+                <button onclick="exportData()" class="btn btn-info">导出数据</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+    <br>
+    <div class="bs-example" data-example-id="hoverable-table">
+        <table class="table table-hover table-responsive  table-condensed table-striped">
+            <thead>
+                <tr>
+                    <th class="text-center">流ID</th>
+                    <th class="text-center">源IP地址</th>
+                    <th class="text-center">源端口</th>
+                    <th class="text-center">目的IP地址</th>
+                    <th class="text-center">目的端口</th>
+                    <!-- <th class="text-left">加密流量异常分析</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for index, data in enumerate(flow_df) %}
+                <tr class="bodyTr" data-toggle="modal" data-target="#myModal" data-FD="{{ data.get('Flow Duration', '') }}" data-FPs="{{ data.get('Flow Pkts/s', '') }}" data-PLM="{{ data.get('Pkt Len Max', '') }}">
+                  <th scope="row" class="text-center" id="id">{{ index }}</th>
+                  <td class="text-nowrap text-center">{{ data.get('1', '') }}</td>
+                  <td class="text-center">{{ data.get('3', '') }}</td>
+                  <td class="text-center">{{ data.get('2', '') }}</td>
+                  <td class="text-center text-nowrap">{{ data.get('4', '') }}</td>
+                  <!-- <td class="text-left text-nowrap">{{ data.get('predicted_labels', '') }}</td> -->
+                </tr>
+                {% endfor %}                
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="pagination" style="margin-left: 41%;">
+        {{ pagination.info }}
+        <div class="links" style="margin-left: -18%;">
+          {{ pagination.links }}
+        </div>
+    </div>
+
+    <script src="../../static/bootstrap-3.3.5/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="../../static/bootstrap-3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../static/jquery-ui-bootstrap/assets/js/jquery-ui-1.10.0.custom.min.js" type="text/javascript"></script>
+    <!--清除过滤器-->
+<!--额外-->
+<script>
+    function exportData() {
+        // 获取选择的导出格式
+        var exportFormat = document.getElementById("exportFormat").value;
+
+        // 发送Ajax请求到后端
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/export?format=' + exportFormat, true);
+        xhr.responseType = 'blob';
+
+        xhr.onload = function () {
+            // 创建一个下载链接
+            var a = document.createElement('a');
+            var url = window.URL.createObjectURL(xhr.response);
+            a.href = url;
+            a.download = 'exported_data.' + exportFormat;
+            
+            // 将链接添加到页面并触发点击
+            document.body.appendChild(a);
+            a.click();
+            
+            // 清理
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        };
+
+        // 发送请求
+        xhr.send();
+    }
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../static/media/css/indexlogin.css" rel="stylesheet" type="text/css" />
+
+    <script src="../../static/bootstrap-3.3.5/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="../../static/bootstrap-3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../static/jquery-ui-bootstrap/assets/js/jquery-ui-1.10.0.custom.min.js" type="text/javascript"></script>
+
+    <title>加密数据流量分析</title>
+
+    {% if msg %}
+    <script>
+      var msg = "{{ msg }}";
+      alert(msg);
+    </script>
+    {% endif %}
+
+</head>
+<body id="my-content">
+    
+    <div class="container">
+        
+        <div class="ant-tabs-nav-wrap">
+            <div class="ant-tabs-nav-scroll">
+                <div class="ant-tabs-nav ant-tabs-nav-animated">
+                    <div>
+                        <div role="tab" aria-disabled="false"  data-index="0" class="ant-tabs-tab-active ant-tabs-tab" onclick="turnlogin(this)">
+                            登录
+                        </div>
+                        <div role="tab" aria-disabled="false"  data-index="1" class=" ant-tabs-tab" onclick="turnlogin(this)">
+                            注册
+                        </div>
+                    </div>
+                    <div id="article" class="ant-tabs-ink-bar ant-tabs-ink-bar-animated tabs-active1-style"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main_left active" id="divLogin">
+            <h2>登录</h2>
+            <!-- <form method="POST" class="form_login" onsubmit="return loginForm()" action="{{ url_for('ac_login') }}"> -->
+            <form method="POST" class="form_login" onsubmit="return loginForm()">
+                <input type="text" name="account" placeholder="请输入账号">
+                <input type="password" name="password" placeholder="请输入密码">
+                <div class="blank">&nbsp;</div>
+                <!-- <p><a href="javascript:void(0)" class="forget_pwd">忘记密码?</a></p> -->
+                <div class="card">
+                    <button class="btn_login" type="submit">登录</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- <div class="way">
+            <div class="change_way">
+                <button class="click" onclick="dclick(this)">注册</button>
+            </div>
+        </div> -->
+        <div class="main_right active" id="divRegister">
+            <h2>注册</h2>
+            <form method="POST" class="form_register" onsubmit="return validateForm()" action="{{ url_for('ac_register') }}">
+                <input type="text" name="r_account" placeholder="请输入邮箱/手机号">
+                <input type="password" name="r_password" placeholder="请输入密码">
+                <input type="password" name="rv_password" placeholder="确认密码">
+                <div class="songhuashu">
+                    <button class="btn_register" type="submit">注册</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div id="main" style="height:250px;width: 50%;float:left; margin-left:-5%; "></div>
+
+    <script>
+
+        function loginForm() {
+        var account = document.getElementsByName('account')[0].value;
+        var password = document.getElementsByName('password')[0].value;
+        
+        if (account.length<6||account.length>15){
+            alert("用户名长度为6-15位");
+            return false;
+        }
+
+        if (password.length<6||password.length>15){
+            alert("密码长度为6-15位");
+            return false;
+        }
+
+        // return true;
+
+        $.ajax({  
+        type: "POST",
+        url: "/ac_login",
+        contentType: "application/json",
+        data: JSON.stringify({ 'account': account, 'password': password }),
+        dataType: "html",
+        cache: false,
+        success: function(response) {
+            var responseObj = JSON.parse(response);  
+            console.log(responseObj)
+            if(responseObj.code=="200"){
+                var access_token = responseObj.access_token
+                var authorization = "Bearer " + access_token
+
+
+                document.body.style = '';
+
+                // 假设你有一个id为"myElement"的元素  
+                var element = document.getElementById("my-content");  
+                
+                // 获取并清除所有的样式  
+                var styles = element.style;  
+                for (var i in styles) {  
+                    element.style[i] = null;  
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "/index",
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader('Authorization', authorization);
+                    },
+                    dataType: "html",
+                    cache: false,
+                    success: function(data) {
+                        console.log(data)
+                        $("body").removeClass();
+                        // document.body.style.backgroundImage = "none";
+                        $("body").css("background-image", "none");
+
+                        // var newPage = $('<div>').html(data);
+                        // $("#my-content").replaceWith(newPage);
+                        $("#my-content").html(data);
+                    }
+                });
+            }
+            else{
+                alert(responseObj.msg)
+            }
+
+            
+            },
+            error: function() {
+                console.log('登录请求失败');
+            }
+        });
+
+            return false; // 阻止表单的标准提交  
+
+        }
+
+
+        function validateForm() {
+        var account = document.getElementsByName('r_account')[0].value;
+        var password = document.getElementsByName('r_password')[0].value;
+        var v_password = document.getElementsByName('rv_password')[0].value;
+        
+        if (account.length<6||account.length>15){
+            alert("用户名长度为6-15位");
+            return false;
+        }
+
+        if (password.length<6||password.length>15){
+            alert("密码长度为6-15位");
+            return false;
+        }
+
+        if (password !== v_password) {
+            alert("两次密码输入不一致，请重新输入");
+            return false;
+        }
+
+        return true;
+        }
+
+
+         /* 鼠标点击切换按钮特效 */
+        var middlePart = document.querySelector('.way');
+        var leftPart = document.querySelector('.main_left');
+        var rightPart = document.querySelector('.main_right');
+ 
+        function dclick(e) {
+            if (e.textContent == '注册') {
+                middlePart.classList.add('pull');
+                leftPart.classList.add('hid');
+                rightPart.classList.add('dis');
+                e.textContent = '登录';
+            } else {
+                e.textContent = '注册';
+                middlePart.classList.remove('pull');
+                leftPart.classList.remove('hid');
+                rightPart.classList.remove('dis');
+            }
+        }
+ 
+        /* 鼠标点击登录按钮波纹特效 */
+        var card = document.querySelector('.card');
+        card.addEventListener('click',function(e){
+            
+            let x = e.clientX - this.offsetLeft - 360;
+            let y = e.clientY - this.offsetTop - 155;
+ 
+            let circle = document.createElement('span');
+            circle.style.left = x + 'px';
+            circle.style.top = y + 'px';
+            
+            this.appendChild(circle);
+ 
+            setInterval(function(){
+                circle.remove();
+            },1000)
+        }) 
+ 
+        /* 鼠标点击注册按钮波纹特效 */ 
+        var shs = document.querySelector('.songhuashu');
+        shs.addEventListener('click', function(e) {
+            let x = e.clientX - this.offsetLeft - 760;
+            let y = e.clientY - this.offsetTop - 155;
+ 
+            let circle = document.createElement('span');
+            circle.style.left = x + 'px';
+            circle.style.top = y + 'px';
+            
+            this.appendChild(circle);
+ 
+            setInterval(function(){
+                circle.remove();
+            },1000)
+        })
+
+
+        function turnlogin(element){
+            // 获取data-index属性值
+            var dataIndex = element.getAttribute('data-index');
+
+            // 现在，dataIndex变量中存储了div元素上的data-index属性值
+            console.log('data-index:', dataIndex);
+
+            var divLogin = document.getElementById("divLogin");
+            var divRegister = document.getElementById("divRegister");
+
+            if(dataIndex == 0){
+                divLogin.classList.add('main_left');
+                divLogin.classList.remove('main_right');
+                divRegister.classList.add('main_right');
+                divRegister.classList.remove('main_left');
+            }
+            else if(dataIndex == 1){
+                divRegister.classList.add('main_left');
+                divRegister.classList.remove('main_right');
+                divLogin.classList.add('main_right');
+                divLogin.classList.remove('main_left');
+            }
+
+        }
+
+    </script>
+    <script>
+        let $article = $('#article');
+        $('.ant-tabs-tab').on('click', function () {
+            //删除选中的样式
+            $('.ant-tabs-tab').removeClass("ant-tabs-tab-active")
+            //线条移动
+            $article.css({
+                "transform": "translate3d("+$(this).attr('data-index')*190+"px, 0px, 0px)"
+            });
+            //选中tab样式
+            this.classList.add("ant-tabs-tab-active")
+        });
+    </script>
+    <style>
+        .ant-tabs-nav-wrap {
+            margin-bottom: -1px;
+            overflow: hidden
+        }
+
+        .ant-tabs-nav-scroll {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .ant-tabs-nav {
+            position: relative;
+            display: inline-block;
+            box-sizing: border-box;
+            margin: 0;
+            padding-left: 0;
+            list-style: none;
+            transition: transform .3s cubic-bezier(.645, .045, .355, 1);
+            text-align: center;
+            background-color: rgba(249, 249, 249, 0.8);
+            border-radius: 6px;
+        }
+
+        .ant-tabs-nav .ant-tabs-tab {
+            position: relative;
+            display: inline-block;
+            box-sizing: border-box;
+            height: 100%;
+            padding: 12px 16px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color .3s cubic-bezier(.645,.045,.355,1);
+            width: 190px;
+            text-align: center;
+
+        }
+
+        .ant-tabs-nav .ant-tabs-tab:last-child {
+            margin-right: 0;
+        }
+        .ant-tabs-nav .ant-tabs-tab-active {
+            color: #0080cc;
+            font-weight: 500;
+        }
+        /* .ant-tabs-nav .ant-tabs-tab {
+            position: relative;
+            display: inline-block;
+            box-sizing: border-box;
+            height: 100%;
+            margin: 0 32px 0 0;
+            padding: 12px 16px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color .3s cubic-bezier(.645,.045,.355,1);
+        } */
+        *, :after, :before {
+            box-sizing: border-box;
+        }
+        用户代理样式表
+        div {
+            display: block;
+        }
+        .ant-tabs-nav {
+            position: relative;
+            display: inline-block;
+            box-sizing: border-box;
+            margin: 0;
+            padding-left: 0;
+            list-style: none;
+            transition: transform .3s cubic-bezier(.645,.045,.355,1);
+        }
+
+        .ant-tabs-nav-scroll {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .tabs-active1-style {
+            display: block;
+            transform: translate3d(0px, 0px, 0px);
+            width: 190px !important;
+        }
+
+        /* .tabs-active2-style {
+            display: block;
+            transform: translate3d(1400px, 0px, 0px);
+            width: 1900px !important;
+        } */
+        /* .tabs-active3-style {
+            display: block;
+            transform: translate3d(288px, 0px, 0px);
+            width: 96px !important;
+        } */
+
+        .ant-tabs-ink-bar-animated {
+            transition: transform .3s cubic-bezier(.645,.045,.355,1),width .2s cubic-bezier(.645,.045,.355,1),left .3s cubic-bezier(.645,.045,.355,1);
+        }
+
+        .ant-tabs-ink-bar {
+            position: absolute;
+            bottom: 1px;
+            left: 0;
+            z-index: 1;
+            box-sizing: border-box;
+            width: 0;
+            height: 2px;
+            background-color: #0080cc;
+            transform-origin: 0 0;
+        }
+
+    </style>
+
+
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <!-- ECharts单文件引入 -->
+        <script src="../../static/echarts-2.27/build/dist/echarts.js"></script>
+        <script type="text/javascript">
+            // 路径配置
+            require.config({
+                paths: {
+                    echarts: '../../static/echarts-2.27/build/dist'
+                }
+            });
+
+            // 使用
+            require(
+                [
+                    'echarts',
+                    'echarts/chart/wordCloud' // 使用柱状图就加载bar模块，按需加载
+                ],
+                function (ec) {
+                    // 基于准备好的dom，初始化echarts图表
+                    var myChart = ec.init(document.getElementById('main'));
+
+                    function createRandomItemStyle() {
+                        return {
+                            normal: {
+                                color: 'rgb(' + [
+                                    Math.round(Math.random() * 160),
+                                    Math.round(Math.random() * 160),
+                                    Math.round(Math.random() * 160)
+                                ].join(',') + ')'
+                            }
+                        };
+                    }
+
+                    var option = {
+                        tooltip: {
+                            show: false
+                        },
+                        series: [{
+                            name: 'Protocal',
+                            type: 'wordCloud',
+                            size: ['100%', '100%'],
+                            textRotation: [0, 45, 90, -45],
+                            textPadding: 0,
+                            autoSize: {
+                                enable: true,
+                                minSize: 24
+                            },
+                            data: [
+                                {
+                                    name: "IP",
+                                    value: 6181,
+                                    itemStyle: createRandomItemStyle()
+                                },
+                                {
+                                    name: "IPv6",
+                                    value: 965,
+                                    itemStyle: createRandomItemStyle()
+                                },
+                                {
+                                    name: "TCP",
+                                    value: 6181,
+                                    itemStyle: createRandomItemStyle()
+                                },
+                                {
+                                    name: "UDP",
+                                    value: 4386,
+                                    itemStyle: createRandomItemStyle()
+                                },
+                                {
+                                    name: "ARP",
+                                    value: 4055,
+                                    itemStyle: createRandomItemStyle()
+                                },
+                                {
+                                    name: "RARP",
+                                    value: 2467,
+                                    itemStyle: createRandomItemStyle()
+                                },
+                                {
+                                    name: "ICMP",
+                                    value: 1898,
+                                    itemStyle: createRandomItemStyle()
+                                },
+                                {
+                                    name: "PPTP",
+                                    value: 1484,
+                                    itemStyle: createRandomItemStyle()
+                                },
+                                {
+                                    name: "L2TP",
+                                    value: 1112,
+                                    itemStyle: createRandomItemStyle()
+                                },
+                                {
+                                    name: "ICMPv6",
+                                    value: 965,
+                                    itemStyle: createRandomItemStyle()
+                                },
+                                {
+                                    name: "IGMP",
+                                    value: 847,
+                                    itemStyle: createRandomItemStyle()
+                                },
+                                {
+                                    name: "IPsec",
+                                    value: 582,
+                                    itemStyle: createRandomItemStyle()
+                                },
+                                {
+                                    name: "TLS",
+                                    value: 555,
+                                    itemStyle: createRandomItemStyle()
+                                },
+                                {
+                                    name: "SCTP",
+                                    value: 550,
+                                    itemStyle: createRandomItemStyle()
+                                },
+                                {
+                                    name: "RSVP",
+                                    value: 462,
+                                    itemStyle: createRandomItemStyle()
+                                },
+                                {
+                                    name: "OSPF",
+                                    value: 366,
+                                    itemStyle: createRandomItemStyle()
+                                },
+                                {
+                                    name: "Rita Ora",
+                                    value: 360,
+                                    itemStyle: createRandomItemStyle()
+                                },
+                                {
+                                    name: "DHCP",
+                                    value: 282,
+                                    itemStyle: createRandomItemStyle()
+                                },
+                                {
+                                    name: "FTP",
+                                    value: 273,
+                                    itemStyle: createRandomItemStyle()
+                                },
+                                {
+                                    name: "DNS",
+                                    value: 265,
+                                    itemStyle: createRandomItemStyle()
+                                },
+                                {
+                                    name: "HTTP",
+                                    value: 273,
+                                    itemStyle: createRandomItemStyle()
+                                }, {
+                                    name: "HTTPS",
+                                    value: 273,
+                                    itemStyle: createRandomItemStyle()
+                                }, {
+                                    name: "IRC",
+                                    value: 273,
+                                    itemStyle: createRandomItemStyle()
+                                }, {
+                                    name: "NNTP",
+                                    value: 273,
+                                    itemStyle: createRandomItemStyle()
+                                }, {
+                                    name: "XMPP",
+                                    value: 273,
+                                    itemStyle: createRandomItemStyle()
+                                }, {
+                                    name: "POP3",
+                                    value: 273,
+                                    itemStyle: createRandomItemStyle()
+                                }, {
+                                    name: "SMTP",
+                                    value: 273,
+                                    itemStyle: createRandomItemStyle()
+                                }, {
+                                    name: "SNMP",
+                                    value: 273,
+                                    itemStyle: createRandomItemStyle()
+                                }, {
+                                    name: "SSH",
+                                    value: 273,
+                                    itemStyle: createRandomItemStyle()
+                                }, {
+                                    name: "TELNET",
+                                    value: 273,
+                                    itemStyle: createRandomItemStyle()
+                                }, {
+                                    name: "RPC",
+                                    value: 273,
+                                    itemStyle: createRandomItemStyle()
+                                }, {
+                                    name: "RTCP",
+                                    value: 273,
+                                    itemStyle: createRandomItemStyle()
+                                }, {
+                                    name: "QUIC",
+                                    value: 273,
+                                    itemStyle: createRandomItemStyle()
+                                }, {
+                                    name: "RTSP",
+                                    value: 273,
+                                    itemStyle: createRandomItemStyle()
+                                }, {
+                                    name: "SDP",
+                                    value: 273,
+                                    itemStyle: createRandomItemStyle()
+                                }, {
+                                    name: "SOAP",
+                                    value: 273,
+                                    itemStyle: createRandomItemStyle()
+                                }, {
+                                    name: "SSDP",
+                                    value: 273,
+                                    itemStyle: createRandomItemStyle()
+                                }, {
+                                    name: "BGP",
+                                    value: 273,
+                                    itemStyle: createRandomItemStyle()
+                                }, {
+                                    name: "RIP",
+                                    value: 273,
+                                    itemStyle: createRandomItemStyle()
+                                }
+                            ]
+                        }]
+                    };
+                    // 为echarts对象加载数据
+                    myChart.setOption(option);
+                }
+            );
+
+
+        </script>
+
+</body>
+</html>

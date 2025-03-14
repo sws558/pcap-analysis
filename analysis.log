@@ -1,0 +1,176 @@
+nohup: ignoring input
+2023-11-17 13:09:08.092607: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
+2023-11-17 13:09:08.092630: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+ * Serving Flask app 'app' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://172.28.113.213:8000/ (Press CTRL+C to quit)
+WARNING: PcapWriter: unknown LL type for NoneType. Using type 1 (Ethernet)
+172.28.112.1 - - [17/Nov/2023 13:10:22] "GET / HTTP/1.1" 200 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/css/bootstrap-responsive.min.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/css/font-awesome.min.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/css/style-metro.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/css/style.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/css/style-responsive.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/css/uniform.default.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/css/default.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/css/jquery.gritter.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/css/fullcalendar.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/css/daterangepicker.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/css/jqvmap.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "GET /upload/ HTTP/1.1" 200 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/css/jquery.easy-pie-chart.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/js/jquery-1.10.1.min.js HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/image/css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/image/menu-toggler.png HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/js/jquery-migrate-1.2.1.min.js HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/js/jquery-ui-1.10.1.custom.min.js HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/js/jquery.slimscroll.min.js HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/bootstrap-3.3.5/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/bootstrap-3.3.5/css/bootstrap-theme.min.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/upload/buttons.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/upload/fileinput.min.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/upload/default.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/echarts-2.27/build/dist/echarts.js HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/bootstrap-3.3.5/js/jquery-1.11.3.min.js HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/bootstrap-3.3.5/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/bootstrap-3.3.5/js/fileinput.min.js HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/upload/fileinput_locale_zh.js HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/js/jquery.cookie.min.js HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/js/jquery.blockui.min.js HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/image/fontawesome-webfont.woff HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/js/jquery.uniform.min.js HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/image/sidebar-menu-arrow.png HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/js/app.js HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/js/index.js HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/image/sidebar-toggler.jpg HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:22] "[36mGET /static/media/image/favicon.ico HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:28] "POST /upload/ HTTP/1.1" 200 -
+172.28.112.1 - - [17/Nov/2023 13:10:28] "[36mGET /static/bootstrap-3.3.5/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:28] "[36mGET /static/bootstrap-3.3.5/css/bootstrap-theme.min.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:28] "[36mGET /static/upload/buttons.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:28] "[36mGET /static/upload/default.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:28] "[36mGET /static/upload/fileinput.min.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:28] "[36mGET /static/echarts-2.27/build/dist/echarts.js HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:28] "[36mGET /static/bootstrap-3.3.5/js/jquery-1.11.3.min.js HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:28] "[36mGET /static/bootstrap-3.3.5/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:28] "[36mGET /static/bootstrap-3.3.5/js/fileinput.min.js HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:28] "[36mGET /static/upload/fileinput_locale_zh.js HTTP/1.1[0m" 304 -
+2023-11-17 13:10:48.913629: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:923] could not open file to read NUMA node: /sys/bus/pci/devices/0000:01:00.0/numa_node
+Your kernel may have been built without NUMA support.
+2023-11-17 13:10:48.913712: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
+2023-11-17 13:10:48.913740: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcublas.so.11'; dlerror: libcublas.so.11: cannot open shared object file: No such file or directory
+2023-11-17 13:10:48.913764: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcublasLt.so.11'; dlerror: libcublasLt.so.11: cannot open shared object file: No such file or directory
+2023-11-17 13:10:48.913787: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcufft.so.10'; dlerror: libcufft.so.10: cannot open shared object file: No such file or directory
+2023-11-17 13:10:48.913812: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcurand.so.10'; dlerror: libcurand.so.10: cannot open shared object file: No such file or directory
+2023-11-17 13:10:48.913834: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcusolver.so.11'; dlerror: libcusolver.so.11: cannot open shared object file: No such file or directory
+2023-11-17 13:10:48.913856: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcusparse.so.11'; dlerror: libcusparse.so.11: cannot open shared object file: No such file or directory
+2023-11-17 13:10:48.913885: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudnn.so.8'; dlerror: libcudnn.so.8: cannot open shared object file: No such file or directory
+2023-11-17 13:10:48.913890: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1835] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2023-11-17 13:10:48.914134: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Running as user "root" and group "root". This could be dangerous.
+/root/pcap_analysis_nx_v03/store/pcap/nz93lxv84g.pcap 5
+Model: "model"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input_2 (InputLayer)         [(None, 300)]             0         
+_________________________________________________________________
+lambda (Lambda)              (None, 300, 256)          0         
+_________________________________________________________________
+conv1d (Conv1D)              (None, 295, 192)          295104    
+_________________________________________________________________
+max_pooling1d (MaxPooling1D) (None, 147, 192)          0         
+_________________________________________________________________
+conv1d_1 (Conv1D)            (None, 143, 320)          307520    
+_________________________________________________________________
+max_pooling1d_1 (MaxPooling1 (None, 71, 320)           0         
+_________________________________________________________________
+hierarchical_attention_netwo (None, 320)               61824     
+=================================================================
+Total params: 664,448
+Trainable params: 664,448
+Non-trainable params: 0
+_________________________________________________________________
+Model: "model_1"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input_1 (InputLayer)         [(None, 30, 300)]         0         
+_________________________________________________________________
+time_distributed (TimeDistri (None, 30, 320)           664448    
+_________________________________________________________________
+bidirectional (Bidirectional (None, 30, 1024)          2562048   
+_________________________________________________________________
+hierarchical_attention_netwo (None, 1024)              525312    
+_________________________________________________________________
+dense (Dense)                (None, 16)                16400     
+=================================================================
+Total params: 3,768,208
+Trainable params: 3,768,208
+Non-trainable params: 0
+_________________________________________________________________
+read model
+172.28.112.1 - - [17/Nov/2023 13:10:49] "GET /behavioranalysis1/ HTTP/1.1" 200 -
+172.28.112.1 - - [17/Nov/2023 13:10:49] "[36mGET /static/bootstrap-3.3.5/css/bootstrap-theme.min.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:49] "[36mGET /static/jquery-ui-bootstrap/css/custom-theme/jquery-ui-1.10.0.custom.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:49] "[36mGET /static/bootstrap-3.3.5/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:49] "[36mGET /static/bootstrap-3.3.5/js/jquery-1.11.3.min.js HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:49] "[36mGET /static/jquery-ui-bootstrap/assets/js/jquery-ui-1.10.0.custom.min.js HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:49] "[36mGET /static/bootstrap-3.3.5/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+Running as user "root" and group "root". This could be dangerous.
+read_batch none
+predict none
+/root/pcap_analysis_nx_v03/store/pcap/nz93lxv84g.pcap 6
+172.28.112.1 - - [17/Nov/2023 13:10:51] "GET /behavioranalysis2/ HTTP/1.1" 200 -
+172.28.112.1 - - [17/Nov/2023 13:10:51] "[36mGET /static/bootstrap-3.3.5/js/jquery-1.11.3.min.js HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:51] "[36mGET /static/bootstrap-3.3.5/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:51] "[36mGET /static/bootstrap-3.3.5/css/bootstrap-theme.min.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:51] "[36mGET /static/jquery-ui-bootstrap/css/custom-theme/jquery-ui-1.10.0.custom.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:51] "[36mGET /static/bootstrap-3.3.5/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:51] "[36mGET /static/jquery-ui-bootstrap/assets/js/jquery-ui-1.10.0.custom.min.js HTTP/1.1[0m" 304 -
+Running as user "root" and group "root". This could be dangerous.
+/root/pcap_analysis_nx_v03/store/pcap/nz93lxv84g.pcap 4
+succes load
+Model: "model_1"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input_1 (InputLayer)         [(None, 30, 300)]         0         
+_________________________________________________________________
+time_distributed (TimeDistri (None, 30, 512)           1148032   
+_________________________________________________________________
+bidirectional (Bidirectional (None, 30, 1024)          3151872   
+_________________________________________________________________
+hierarchical_attention_netwo (None, 1024)              525312    
+_________________________________________________________________
+dense (Dense)                (None, 512)               524800    
+_________________________________________________________________
+dense_1 (Dense)              (None, 256)               131328    
+_________________________________________________________________
+dense_2 (Dense)              (None, 2)                 514       
+=================================================================
+Total params: 5,481,858
+Trainable params: 5,481,858
+Non-trainable params: 0
+_________________________________________________________________
+None
+172.28.112.1 - - [17/Nov/2023 13:10:53] "GET /behavioranalysis/ HTTP/1.1" 200 -
+172.28.112.1 - - [17/Nov/2023 13:10:53] "[36mGET /static/bootstrap-3.3.5/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:53] "[36mGET /static/jquery-ui-bootstrap/css/custom-theme/jquery-ui-1.10.0.custom.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:53] "[36mGET /static/bootstrap-3.3.5/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:53] "[36mGET /static/bootstrap-3.3.5/css/bootstrap-theme.min.css HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:53] "[36mGET /static/bootstrap-3.3.5/js/jquery-1.11.3.min.js HTTP/1.1[0m" 304 -
+172.28.112.1 - - [17/Nov/2023 13:10:53] "[36mGET /static/jquery-ui-bootstrap/assets/js/jquery-ui-1.10.0.custom.min.js HTTP/1.1[0m" 304 -
+WARNING: PcapWriter: unknown LL type for NoneType. Using type 1 (Ethernet)
+WARNING: PcapWriter: unknown LL type for NoneType. Using type 1 (Ethernet)
+WARNING: PcapWriter: unknown LL type for NoneType. Using type 1 (Ethernet)
