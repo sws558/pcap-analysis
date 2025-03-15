@@ -22,3 +22,4 @@ app/utils/warning
 
 /processed_numpy_data
 images
+/share/python-wheels
